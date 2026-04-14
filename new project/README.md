@@ -1,163 +1,169 @@
-<p align="center">
-  <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="docs/assets/logo-light.svg">
-      <img height="100" alt="Endee" src="docs/assets/logo-dark.svg">
-  </picture>
-</p>
+🚀 Smart Hospital Queue Management & Appointment System (AI-Based)
 
-<p align="center">
-    <b>High-performance open-source vector database for AI search, RAG, semantic search, and hybrid retrieval.</b>
-</p>
+---
 
-<p align="center">
-    <a href="./docs/getting-started.md"><img src="https://img.shields.io/badge/Quick_Start-Local_Setup-success?style=flat-square" alt="Quick Start"></a>
-    <a href="https://docs.endee.io/quick-start"><img src="https://img.shields.io/badge/Docs-Quick_Start-success?style=flat-square" alt="Docs"></a>
-    <a href="https://github.com/endee-io/endee/blob/master/LICENSE"><img src="https://img.shields.io/github/license/endee-io/endee?style=flat-square" alt="License"></a>
-    <a href="https://discord.gg/5HFGqDZQE3"><img src="https://img.shields.io/badge/Discord-Join_Chat-5865F2?logo=discord&style=flat-square" alt="Discord"></a>
-    <a href="https://endee.io/"><img src="https://img.shields.io/badge/Website-Endee-111111?style=flat-square" alt="Website"></a>
-    <!-- <a href="https://endee.io/benchmarks"><img src="https://img.shields.io/badge/Benchmarks-Coming_Soon-1F8B4C?style=flat-square" alt="Benchmarks"></a> -->
-    <!-- <a href="https://endee.io/cloud"><img src="https://img.shields.io/badge/Cloud-Coming_Soon-2496ED?style=flat-square" alt="Cloud"></a> -->
-</p>
+📌 Overview
 
-<p align="center">
-<strong><a href="./docs/getting-started.md">Quick Start</a> • <a href="#why-endee">Why Endee</a> • <a href="#use-cases">Use Cases</a> • <a href="#features">Features</a> • <a href="#api-and-clients">API and Clients</a> • <a href="#docs-and-links">Docs</a> • <a href="#community-and-contact">Contact</a></strong>
-</p>
+This project implements a simple AI-based hospital queue management system that predicts patient waiting time and suggests the best time to visit a doctor.
 
-# Endee: Open-Source Vector Database for AI Search
+Unlike traditional systems where patients wait without clarity, this system uses AI logic to estimate waiting time and assist in decision-making.
 
-**Endee** is a high-performance open-source vector database built for AI search and retrieval workloads. It is designed for teams building **RAG pipelines**, **semantic search**, **hybrid search**, recommendation systems, and filtered vector retrieval APIs that need production-oriented performance and control.
+The project demonstrates how intelligent scheduling and basic AI techniques can improve hospital efficiency and patient experience.
 
-Endee combines vector search with filtering, sparse retrieval support, backup workflows, and deployment flexibility across local builds and Docker-based environments. The project is implemented in C++ and optimized for modern CPU targets, including AVX2, AVX512, NEON, and SVE2.
+---
 
-If you want the fastest path to evaluate Endee locally, start with the [Getting Started guide](./docs/getting-started.md) or the hosted docs at [docs.endee.io](https://docs.endee.io/quick-start).
+🎯 Objective
 
-## Why Endee
+To build a practical AI-based system that demonstrates:
 
-- Built as a dedicated vector database for AI applications, search systems, and retrieval-heavy workloads.
-- Supports dense vector retrieval plus sparse search capabilities for hybrid search use cases.
-- Includes payload filtering for metadata-aware retrieval and application-specific query logic.
-- Ships with operational features already documented in this repo, including backup flows and runtime observability.
-- Offers flexible deployment paths: local scripts, manual builds, Docker images, and prebuilt registry images.
+- Waiting time prediction using input data
+- Smart decision-making based on AI logic
+- Basic recommendation system for hospital visits
+- Real-world healthcare problem solving
 
-## Getting Started
+---
 
-The full installation, build, Docker, runtime, and authentication instructions are in [docs/getting-started.md](./docs/getting-started.md).
+🧠 Key Concepts Demonstrated
 
-Fastest local path:
+- Rule-Based AI System
+- Decision Making Logic
+- Basic Recommendation System
+- Time Prediction Model
+- User Input Processing
 
-```bash
-chmod +x ./install.sh ./run.sh
-./install.sh --release --avx2
-./run.sh
-```
+---
 
-The server listens on port `8080`. For detailed setup paths, supported operating systems, CPU optimization flags, Docker usage, and authentication examples, use:
+⚙️ Tech Stack
 
-- [Getting Started](./docs/getting-started.md)
-- [Hosted Quick Start Docs](https://docs.endee.io/quick-start)
+- Python
+- Basic AI Logic (Rule-Based)
+- CLI (Command Line Interface)
 
-## Use Cases
+---
 
-### RAG and AI Retrieval
+🏗️ System Architecture
 
-Use Endee as the retrieval layer for question answering, chat assistants, copilots, and other RAG applications that need fast vector search with metadata-aware filtering.
+1. User enters:
+   
+   - Number of patients ahead
+   - Average consultation time
 
-### Agentic AI and AI Agent Memory
+2. System processes input
 
-Use Endee as the long-term memory and context retrieval layer for AI agents built with frameworks like LangChain, CrewAI, AutoGen, and LlamaIndex. Store and retrieve past observations, tool outputs, conversation history, and domain knowledge mid-execution with low-latency filtered vector search, so your autonomous agents get the right context without stalling their reasoning loop.
+3. Waiting time is calculated
 
-### Semantic Search
+4. AI logic evaluates:
+   
+   - Whether it is a good time to visit
 
-Build semantic search experiences for documents, products, support content, and knowledge bases using vector similarity search instead of exact keyword-only matching.
+5. Output is displayed to the user
 
-### Hybrid Search
+---
 
-Combine dense retrieval, sparse vectors, and filtering to improve relevance for search workflows where both semantic understanding and term-level precision matter.
+🤖 AI Logic Used
 
-### Recommendations and Matching
+The system uses a simple prediction model:
 
-Support recommendation, similarity matching, and nearest-neighbor retrieval workflows across text, embeddings, and other high-dimensional representations.
+- Waiting Time = Patients Ahead × Avg Time per Patient
 
-## Features
+Based on result:
 
-- **Vector search** for AI retrieval and semantic similarity workloads.
-- **Hybrid retrieval support** with sparse vector capabilities documented in [docs/sparse.md](./docs/sparse.md).
-- **Payload filtering** for structured retrieval logic documented in [docs/filter.md](./docs/filter.md).
-- **Backup APIs and flows** documented in [docs/backup-system.md](./docs/backup-system.md).
-- **Operational logging and instrumentation** documented in [docs/logs.md](./docs/logs.md) and [docs/mdbx-instrumentation.md](./docs/mdbx-instrumentation.md).
-- **CPU-targeted builds** for AVX2, AVX512, NEON, and SVE2 deployments.
-- **Docker deployment options** for local and server environments.
+- ≤ 30 mins → Best time to visit ✅
+- 30–60 mins → Moderate waiting ⚠️
+- «60 mins → Try another slot ❌»
 
-## API and Clients
+---
 
-Endee exposes an HTTP API for managing indexes and serving retrieval workloads. The current repo documentation and examples focus on running the server directly and calling its API endpoints.
+💬 User Interaction
 
-Current developer entry points:
+The system works through a simple terminal interface:
 
-- [Getting Started](./docs/getting-started.md) for local build and run flows
-- [Hosted Docs](https://docs.endee.io/quick-start) for product documentation
-- [Release Notes 1.0.0](https://github.com/endee-io/endee/releases/tag/1.0.0) for recent platform changes
+- User inputs values
+- System responds with:
+  - Estimated waiting time
+  - Recommendation
 
-## Docs and Links
+---
 
-- [Getting Started](./docs/getting-started.md)
-- [Hosted Documentation](https://docs.endee.io/quick-start)
-- [Release Notes](https://github.com/endee-io/endee/releases/tag/1.0.0)
-- [Sparse Search](./docs/sparse.md)
-- [Filtering](./docs/filter.md)
-- [Backups](./docs/backup-system.md)
+🔥 Features
 
-## Community and Contact
+- ⏱️ Waiting time prediction
+- 🤖 AI-based decision making
+- 📊 Simple and fast execution
+- 💡 Real-world healthcare use case
+- ⚡ Lightweight and beginner-friendly
 
-- Join the community on [Discord](https://discord.gg/5HFGqDZQE3)
-- Visit the website at [endee.io](https://endee.io/)
-- For trademark or branding permissions, contact [enterprise@endee.io](mailto:enterprise@endee.io)
+---
 
-## Contributing
+🧪 Example Run
 
-We welcome contributions from the community to help make vector search faster and more accessible for everyone.
-
-- Submit pull requests for fixes, features, and improvements
-- Report bugs or performance issues through GitHub issues
-- Propose enhancements for search quality, performance, and deployment workflows
-
-## License
-
-Endee is open source software licensed under the **Apache License 2.0**. See the [LICENSE](./LICENSE) file for full terms.
-
-## Trademark and Branding
-
-“Endee” and the Endee logo are trademarks of Endee Labs.
-
-The Apache License 2.0 does not grant permission to use the Endee name, logos, or branding in a way that suggests endorsement or affiliation.
-
-If you offer a hosted or managed service based on this software, you must use your own branding and avoid implying it is an official Endee service.
-
-## Third-Party Software
-
-This project includes or depends on third-party software components licensed under their respective open-source licenses. Use of those components is governed by their own license terms.
-
-
-## 🔹 My Contribution
-
-I have implemented a simple AI-based hospital queue system.
-
-### Features Added:
-- Predicts waiting time based on number of patients
-- Suggests whether it is a good time to visit
-- Uses basic AI decision logic
-
-### How to Run:
-1. Open terminal
-2. Run:
-   python app.py
-
-### Example:
 Input:
-Patients ahead: 5  
-Avg time: 10  
+
+Patients ahead: 5
+Avg time per patient: 10
 
 Output:
-Estimated waiting time: 50 minutes  
+
+Estimated waiting time: 50 minutes
 Moderate waiting time ⚠️
+
+---
+
+🚀 How to Run
+
+1️⃣ Clone Repository
+
+git clone <your-repo-link>
+cd endee
+
+2️⃣ Run the Application
+
+python app.py
+
+---
+
+⚠️ Note
+
+This project uses a simplified AI approach for demonstration purposes.
+
+Due to time constraints, advanced features like:
+
+- Real-time database integration
+- Vector search (Endee)
+- Live queue tracking
+
+are not fully implemented but can be extended in future versions.
+
+---
+
+📈 Future Enhancements
+
+- Integration with vector database systems (Endee)
+- Real-time hospital data tracking
+- Web/mobile application interface
+- Machine learning model for better predictions
+- Doctor recommendation system
+
+---
+
+🏁 Conclusion
+
+This project demonstrates how AI can be applied to solve real-world healthcare problems by reducing waiting time and improving user experience.
+
+It reflects the ability to:
+
+- Build AI-based logic systems
+- Solve practical problems
+- Develop working prototypes under constraints
+
+---
+
+👨‍💻 Author
+
+Developed as part of an AI/DS learning project.
+
+---
+
+⭐ Acknowledgment
+
+Inspired by modern AI systems and smart healthcare solutions.
